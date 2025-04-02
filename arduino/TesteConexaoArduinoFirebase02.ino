@@ -6,11 +6,13 @@
 #define WIFI_PASSWORD "12345678"
 
 // Configurações do Firebase
-#define FIREBASE_HOST "https://api-iot-microcontroller-default-rtdb.firebaseio.com/"
+#define FIREBASE_HOST "api-iot-microcontroller-default-rtdb.firebaseio.com"  
 #define FIREBASE_AUTH "hGvYcR7SetlW3XrKP6vmgNVsjvwQRTWsmuiGgF0f"
 
-// Objeto Firebase
+// Objetos Firebase
 FirebaseData firebaseData;
+FirebaseConfig config;
+FirebaseAuth auth;
 
 void setup() {
   Serial.begin(115200);
@@ -26,8 +28,11 @@ void setup() {
   Serial.print("Conectado com IP: ");
   Serial.println(WiFi.localIP());
   
-  // Inicializar Firebase
-  Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
+  // Configurar Firebase
+  config.host = FIREBASE_HOST;
+  config.signer.tokens.legacy_token = FIREBASE_AUTH;
+  
+  Firebase.begin(&config, &auth);
   Firebase.reconnectWiFi(true);
   
   // Testar conexão com Firebase
