@@ -24,18 +24,13 @@ public class TesteUsuario {
     public TesteUsuario() {
     }
 
-    public TesteUsuario(long id, String nome, int idade) {
-        this.id = id;
+    public TesteUsuario(String nome, int idade) {
         this.nome = nome;
         this.idade = idade;
     }
 
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getNome() {
