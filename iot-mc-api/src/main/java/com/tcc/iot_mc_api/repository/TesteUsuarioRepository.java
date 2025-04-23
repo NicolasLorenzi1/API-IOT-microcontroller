@@ -7,6 +7,4 @@ import com.tcc.iot_mc_api.model.TesteUsuario;
 
 @Repository
 public interface TesteUsuarioRepository extends JpaRepository<TesteUsuario, Long>{
-    TesteUsuario findByNome(String nome);
-    boolean existsByNome(String nome);
 }
