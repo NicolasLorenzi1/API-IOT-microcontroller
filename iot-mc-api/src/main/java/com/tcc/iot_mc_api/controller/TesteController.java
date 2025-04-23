@@ -8,10 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.google.api.gax.rpc.NotFoundException;
 import com.google.firebase.FirebaseApp;
 import com.tcc.iot_mc_api.dto.TesteValor;
 import com.tcc.iot_mc_api.model.TesteUsuario;
@@ -41,7 +39,6 @@ public class TesteController {
         return "Firebase conectado? " + !FirebaseApp.getApps().isEmpty(); // retorna o status da aplicação do firebase
     }
 
-
     @PostMapping("sensor")
     public ResponseEntity<String> receiveData(@RequestBody TesteValor data) {  //uma funçao que converte o corpo da requisição em um objeto java e retorna um resposta
         System.out.println("Valor recebido: " + data.getValor());
@@ -59,4 +56,5 @@ public class TesteController {
         TesteUsuario usuarioSalvo = usuarioRepository.save(usuario); // salva o usuario no Repository, linkando o usuario direto ao servidor
         return ResponseEntity.ok("Usuário recebido - Nome: " + usuario.getNome() + ", Idade: " + usuario.getIdade() + " " + usuarioSalvo);
     }   
+
 }

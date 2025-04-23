@@ -15,18 +15,13 @@ public class SQLService {
     @Autowired
     private TesteUsuarioRepository usuarioRepository; // injeção do repository
 
-    public TesteUsuario updateUsuario(long id, TesteUsuario usuarioNovo) {
-        // recebe os dados de existencia do usuario, optional para não dar erro de null value
-        Optional<TesteUsuario> usuarioAntigo = usuarioRepository.findById(id);
+    public TesteUsuario updateUsuario(long id, TesteUsuario novoUsuario) {
 
-        if(usuarioAntigo.isPresent()) {
-            // altera os dados do usuario
-            TesteUsuario usuario = usuarioAntigo.get();
-            usuario.setIdade(usuarioNovo.getIdade());
-            usuario.setNome(usuarioNovo.getNome());
-            return usuario;
-        }
-        // caso não exista o usuário
-        throw new RuntimeException("Usuario not founded in ID: " + id);
+        TesteUsuario usuarioExistente = usuarioRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+        
+        usuarioExistente.setNome(novoUsuario.getNome());
+        usuarioExistente.setIdade(novoUsuario.getIdade());
+        
+        return usuarioRepository.save(usuarioExistente); 
     }
 }
