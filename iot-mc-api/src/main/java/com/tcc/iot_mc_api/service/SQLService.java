@@ -1,8 +1,6 @@
 // SQLService add João
 package com.tcc.iot_mc_api.service;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -56,5 +56,4 @@ public class TesteController {
         TesteUsuario usuarioSalvo = usuarioRepository.save(usuario); // salva o usuario no Repository, linkando o usuario direto ao servidor
         return ResponseEntity.ok("Usuário recebido - Nome: " + usuario.getNome() + ", Idade: " + usuario.getIdade() + " " + usuarioSalvo);
     }   
-
 }
