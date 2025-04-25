@@ -55,5 +55,11 @@ public class TesteController {
     public ResponseEntity<String> receberUsuario(@RequestBody TesteUsuario usuario) {
         TesteUsuario usuarioSalvo = usuarioRepository.save(usuario); // salva o usuario no Repository, linkando o usuario direto ao servidor
         return ResponseEntity.ok("Usuário recebido - Nome: " + usuario.getNome() + ", Idade: " + usuario.getIdade() + " " + usuarioSalvo);
-    }   
+    }
+
+    @GetMapping("/usuario/{id}")
+    public ResponseEntity<TesteUsuario> getUsuario(@PathVariable long id) {
+        TesteUsuario usuario = usuarioRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+        return ResponseEntity.ok(usuario);
+    }
 }
