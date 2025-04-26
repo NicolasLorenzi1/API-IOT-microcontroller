@@ -45,7 +45,7 @@ public class TesteController {
         return ResponseEntity.ok("Valor recebido");
     }
 
-    @PutMapping("/usuario/{id}")
+    @PutMapping("/get/usuario/{id}")
     public ResponseEntity<TesteUsuario> putUsuario(@PathVariable long id, @RequestBody TesteUsuario novoUsuario) { // recebe o parametro id enviado no endpoint e o JSON a ser colocado
         TesteUsuario usuario = sqlService.updateUsuario(id, novoUsuario); // manda os parametros para serem utilizados pelo service
         return ResponseEntity.ok(usuario);
@@ -57,7 +57,7 @@ public class TesteController {
         return ResponseEntity.ok("Usuário recebido - Nome: " + usuario.getNome() + ", Idade: " + usuario.getIdade() + " " + usuarioSalvo);
     }
 
-    @GetMapping("/usuario/{id}")
+    @GetMapping("/put/usuario/{id}")
     public ResponseEntity<TesteUsuario> getUsuario(@PathVariable long id) {
         TesteUsuario usuario = usuarioRepository.findById(id).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
         return ResponseEntity.ok(usuario);
