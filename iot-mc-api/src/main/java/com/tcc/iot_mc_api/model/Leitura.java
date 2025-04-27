@@ -25,6 +25,9 @@ public class Leitura {
     @Column(nullable = false)
     private double valor;
 
+    @Column(nullable = false)
+    private String unidadeMedida;
+
     @ManyToOne
     @JoinColumn(name = "sensor_id")
     private Sensor sensor;
@@ -64,6 +67,14 @@ public class Leitura {
 
     public void setSensor(Sensor sensor) {
         this.sensor = sensor;
+    }
+
+    public String getUnidadeMedida() {
+        return unidadeMedida;
+    }
+
+    public void setUnidadeMedida(String unidadeMedida) {
+        this.unidadeMedida = unidadeMedida;
     }
 
 }

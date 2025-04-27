@@ -8,7 +8,7 @@ import com.tcc.iot_mc_api.model.TesteUsuario;
 import com.tcc.iot_mc_api.repository.TesteUsuarioRepository;
 
 @Service
-public class SQLService {
+public class SQLServiceUsuario {
     
     @Autowired
     private TesteUsuarioRepository usuarioRepository; // injeção do repository

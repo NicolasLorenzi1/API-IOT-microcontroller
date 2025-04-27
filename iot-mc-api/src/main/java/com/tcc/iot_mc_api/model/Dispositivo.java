@@ -7,14 +7,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Sensores")
-public class Sensor {
+@Table(name = "dispositivos")
+public class Dispositivo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,18 +21,18 @@ public class Sensor {
     @Column(nullable = false)
     private String nome;
 
-    @OneToMany(mappedBy = "sensor")
-    private List<Leitura> leituras;
+    @Column(nullable = false)
+    private String local;
 
-    @ManyToOne
-    @JoinColumn(name = "dispositivo_id")
-    private Dispositivo dispositivo;
+    @OneToMany(mappedBy = "dispositivo")
+    private List<Sensor> sensores;
 
-    public Sensor() {
+    public Dispositivo() {
     }
 
-    public Sensor(String nome) {
+    public Dispositivo(String nome, String local) {
         this.nome = nome;
+        this.local = local;
     }
 
     public long getId() {
@@ -49,20 +47,11 @@ public class Sensor {
         this.nome = nome;
     }
 
-    public List<Leitura> getLeituras() {
-        return leituras;
+    public String getLocal() {
+        return local;
     }
 
-    public void setLeituras(List<Leitura> leituras) {
-        this.leituras = leituras;
+    public void setLocal(String local) {
+        this.local = local;
     }
-
-    public Dispositivo getDispositivo() {
-        return dispositivo;
-    }
-
-    public void setDispositivo(Dispositivo dispositivo) {
-        this.dispositivo = dispositivo;
-    }
-
 }

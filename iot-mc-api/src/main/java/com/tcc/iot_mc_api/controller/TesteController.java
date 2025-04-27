@@ -14,7 +14,7 @@ import com.google.firebase.FirebaseApp;
 import com.tcc.iot_mc_api.dto.TesteValor;
 import com.tcc.iot_mc_api.model.TesteUsuario;
 import com.tcc.iot_mc_api.repository.TesteUsuarioRepository;
-import com.tcc.iot_mc_api.service.SQLService;
+import com.tcc.iot_mc_api.service.SQLServiceUsuario;
 
 @RestController
 @RequestMapping("/api/teste")  
@@ -23,7 +23,7 @@ public class TesteController {
     private final TesteUsuarioRepository usuarioRepository;
 
     @Autowired
-    private SQLService sqlService;
+    private SQLServiceUsuario sqlService;
 
     public TesteController(TesteUsuarioRepository usuarioRepository) { //injeçao de dependencia
         this.usuarioRepository = usuarioRepository;
