@@ -6,12 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.tcc.iot_mc_api.model.Usuario;
+import com.tcc.iot_mc_api.model.User;
 
-public class UsuarioDetails implements UserDetails {
+public class UsersDetails implements UserDetails {
 
     @Autowired
-    private Usuario usuario;
+    private User usuario;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -7,7 +7,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.tcc.iot_mc_api.controller.UsuarioDetails;
+import com.tcc.iot_mc_api.controller.UsersDetails;
 
 public class JWTTokenService {
     
@@ -15,7 +15,7 @@ public class JWTTokenService {
 
     private static final String ISSUER = "teste-api";
 
-    public String generateToken(UsuarioDetails usuario) {
+    public String generateToken(UsersDetails usuario) {
         Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY);
         try {
             return JWT.create()

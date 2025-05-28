@@ -1,7 +1,11 @@
 package com.tcc.iot_mc_api.model;
 
+import com.tcc.iot_mc_api.configuration.Role;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -9,7 +13,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "usuario")
-public class Usuario {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,13 +25,17 @@ public class Usuario {
     @Column(nullable = false)
     private String senha;
 
-    public Usuario() {
+    @Column(nullable = true)
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    public User() {
     }
 
-    public Usuario(long id, String email, String senha) {
-        this.id = id;
+    public User(String email, String senha, Role role) {
         this.email = email;
         this.senha = senha;
+        this.role = role;
     }
 
     public long getId() {
