@@ -1,4 +1,4 @@
-package com.tcc.iot_mc_api.model;
+package com.tcc.iot_mc_api.model.device;
 
 import java.time.LocalDateTime;
 
@@ -10,13 +10,21 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "Leituras")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Leitura {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Setter(AccessLevel.NONE)
     private long id;
 
     @Column(nullable = false)
@@ -32,49 +40,10 @@ public class Leitura {
     @JoinColumn(name = "sensor_id")
     private Sensor sensor;
 
-    public Leitura() {
-    }
-
     public Leitura(LocalDateTime tempoDaLeitura, double valor, Sensor sensor) {
         this.tempoDaLeitura = tempoDaLeitura;
         this.valor = valor;
         this.sensor = sensor;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public LocalDateTime getTempoDaLeitura() {
-        return tempoDaLeitura;
-    }
-
-    public void setTempoDaLeitura(LocalDateTime tempoDaLeitura) {
-        this.tempoDaLeitura = tempoDaLeitura;
-    }
-
-    public double getValor() {
-        return valor;
-    }
-
-    public void setValor(double valor) {
-        this.valor = valor;
-    }
-
-    public Sensor getSensor() {
-        return sensor;
-    }
-
-    public void setSensor(Sensor sensor) {
-        this.sensor = sensor;
-    }
-
-    public String getUnidadeMedida() {
-        return unidadeMedida;
-    }
-
-    public void setUnidadeMedida(String unidadeMedida) {
-        this.unidadeMedida = unidadeMedida;
     }
 
 }

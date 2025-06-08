@@ -1,4 +1,4 @@
-package com.tcc.iot_mc_api.model;
+package com.tcc.iot_mc_api.model.device;
 
 import java.util.List;
 
@@ -9,13 +9,21 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Table(name = "dispositivos")
+@Table(name = "Dispositivos")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Dispositivo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Setter(AccessLevel.NONE)
     private long id;
 
     @Column(nullable = false)
@@ -27,31 +35,8 @@ public class Dispositivo {
     @OneToMany(mappedBy = "dispositivo")
     private List<Sensor> sensores;
 
-    public Dispositivo() {
-    }
-
     public Dispositivo(String nome, String local) {
         this.nome = nome;
-        this.local = local;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getLocal() {
-        return local;
-    }
-
-    public void setLocal(String local) {
         this.local = local;
     }
 }
