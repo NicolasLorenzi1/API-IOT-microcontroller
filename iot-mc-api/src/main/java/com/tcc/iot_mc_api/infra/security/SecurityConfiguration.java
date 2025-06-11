@@ -29,7 +29,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(authorize -> authorize
                     .requestMatchers(HttpMethod.POST, "/api/user/login").permitAll()
                     .requestMatchers(HttpMethod.POST, "/api/user/cadastrar").permitAll() // geralmente liberamos o cadastrar somente para o admin, para que outros usuarios não criem usuarios admins e possam manipular tudo
-                    .requestMatchers(HttpMethod.POST, "/api/sensor").hasRole("ADMIN")
+                    .requestMatchers(HttpMethod.POST, "/api/sensor").hasRole("USER")
                     .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)

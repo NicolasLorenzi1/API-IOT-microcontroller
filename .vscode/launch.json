@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ApiParaMicrocontroladoresIoTApplication",
+            "request": "launch",
+            "mainClass": "com.tcc.iot_mc_api.ApiParaMicrocontroladoresIoTApplication",
+            "projectName": "iot-mc-api"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-ApiParaMicrocontroladoresApplication<iot-mc-api>",
             "request": "launch",
             "cwd": "${workspaceFolder}",

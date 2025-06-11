@@ -1,6 +1,6 @@
 package com.tcc.iot_mc_api.dto;
 
-public record AuthDTO(String email, String password) {
+public record AuthDTO(String email, String senha) {
     /*
     @Getter
     @Setter
